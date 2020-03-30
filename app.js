@@ -10,19 +10,12 @@ GAME RULES:
 */
  let scores, roundScore, activePlayer;
 
- scores = [0, 0];
- roundScore = 0;
- activePlayer = 0;
+init()
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
-document.querySelector('.dice').style.display = 'none'
 
-document.getElementById('score-0').textContent = '0'
-document.getElementById('score-1').textContent = '0'
-document.getElementById('current-0').textContent = '0'
-document.getElementById('current-1').textContent = '0'
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
     //1. Random Numnber
@@ -80,4 +73,19 @@ function nextPlayer() {
 
     document.querySelector('.dice').style.display = 'none'
 
+}
+
+document.querySelector('.btn-new').addEventListener('click', init)
+
+function init() {
+    scores = [0, 0]
+    activePlayer = 0
+    roundScore = 0
+
+    document.querySelector('.dice').style.display = 'none'
+
+    document.getElementById('score-0').textContent = '0'
+    document.getElementById('score-1').textContent = '0'
+    document.getElementById('current-0').textContent = '0'
+    document.getElementById('current-1').textContent = '0'
 }
