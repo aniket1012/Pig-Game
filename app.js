@@ -12,20 +12,17 @@ GAME RULES:
 
  scores = [0, 0];
  roundScore = 0;
- activePlayer = 1;
-
-
-
+ activePlayer = 0;
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
-let x = document.querySelector('#score-0').textContent 
-console.log(x);
-
 document.querySelector('.dice').style.display = 'none'
 
-
+document.getElementById('score-0').textContent = '0'
+document.getElementById('score-1').textContent = '0'
+document.getElementById('current-0').textContent = '0'
+document.getElementById('current-1').textContent = '0'
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
     //1. Random Numnber
@@ -37,7 +34,26 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDOM.src = 'dice-' + dice + '.png'
 
     //3 Update the round score IF the rolled numbeer wsa NOT a 1 
+    if (dice !== 1 ) {
+        //add score
+        //round score = roundScore + dice
+        roundScore += dice; 
+        document.querySelector('#current-' + activePlayer).textContent = roundScore
 
+    } else {
+        //next player
 
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+        roundScore = 0
+
+        document.getElementById('current-0').textContent = '0'
+        document.getElementById('current-1').textContent = '0'
+
+        document.querySelector('.player-0-panel').classList.toggle('active')
+        document.querySelector('.player-1-panel').classList.toggle('active')
+
+        // document.querySelector('.player-0-panel').classList.remove('active')
+        // document.querySelector('.player-1-panel').classList.add('active')
+    }
 
 })
